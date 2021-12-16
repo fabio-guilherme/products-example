@@ -29,5 +29,5 @@ function createProductHTML(prod) {
 
 function showProduct(id) {
     sessionStorage.setItem("product_id", id);
-    window.location = "product.htnl";
+    window.location = "product.html";
 }
