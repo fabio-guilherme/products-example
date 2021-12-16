@@ -1,5 +1,6 @@
 body>header,
-body>footer {
+body>footer,
+body>nav {
     padding: 10px;
     margin: 10px;
     color: white;
@@ -35,4 +36,13 @@ section h4 {
 main header {
     background-color: peachpuff;
     text-align: center;
+}
+
+nav {
+    background-color: green;
+    text-align: center;
+}
+
+a:visited {
+    color: white;
 }
