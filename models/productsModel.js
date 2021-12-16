@@ -5,6 +5,7 @@ module.exports.getProducts = async function() {
         let sql = "Select * from products";
         let result = await pool.query(sql);
         let products = result.rows;
+        console.log("[productsModel] products = " + JSON.stringify(products));
         return { status: 200, result: products };
     } catch (err) {
         console.log(err);

@@ -1,0 +1,31 @@
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title> JS </title>
+    <link rel="stylesheet" href="stylesheets/style.css">
+    <script src="javascripts/func.js"></script>
+</head>
+
+<body>
+    <header>
+        <h1> Insert Product </h1>
+    </header>
+    <main>
+        <label for="name"> Name: </label>
+        <input type="text" id="name">
+        <p class="error" id="ename"></p>
+
+        <label for="price"> Price: </label>
+        <input type="number" id="price" min=0>
+        <p class="error" id="eprice">Please write a valid price</p>
+
+        <label for="type"> Type: </label>
+        <select id="type"></select>
+
+        <input type="button" value="Submit" onclick="submit()">
+    </main>
+    <footer> FOOTER </footer>
+</body>
+
+</html>

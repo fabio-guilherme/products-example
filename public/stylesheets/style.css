@@ -1,8 +1,109 @@
-body {
-  padding: 50px;
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
-}
-
-a {
-  color: #00B7FF;
-}
+    body {
+        padding: 50px;
+        font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+    }
+    
+    a {
+        color: #00B7FF;
+    }
+    
+    .error {
+        display: none;
+        color: darkred;
+    }
+    
+    main {
+        background-color: orange;
+        display: grid;
+        /*grid-template-columns: 30% 70%;*/
+        justify-content: start;
+    }
+    
+    main .error,
+    main input[type="button"] {
+        grid-column: span 2;
+    }
+    
+    main input[type="button"],
+    main label,
+    main.error {
+        justify-self: center;
+    }
+    
+    main input[type="number"] ::-webkit-inner-spin-button {
+        -webkit-appearance: none;
+    }
+    
+    input:focus {
+        outline-color: white;
+    }
+    
+    #price {
+        max-width: 100px;
+    }
+    
+    #type {
+        width: 200px;
+    }
+    
+    #name {
+        min-width: 100px;
+        max-width: 400px;
+        width: 100%;
+    }
+    
+    header {
+        background-color: red;
+        text-align: center;
+    }
+    
+    h2 {
+        font-size: 1.2em;
+    }
+    
+    nav {
+        background-color: green;
+        text-align: center;
+    }
+    
+    section {
+        background-color: blue;
+        text-align: center;
+        float: left;
+    }
+    
+    main label {
+        color: darkred;
+    }
+    
+    header,
+    main,
+    footer,
+    nav,
+    main section {
+        padding: 10px;
+        margin: 10px;
+        color: white;
+    }
+    
+    main label,
+    main input,
+    main select,
+    main .error {
+        font: 1.4em Times, sans-serif;
+        margin: 5px;
+        padding: 5px;
+    }
+    
+    footer {
+        text-align: center;
+        background-color: magenta;
+    }
+    
+    input,
+    select {
+        background-color: firebrick;
+        border-color: darkred;
+        color: gold;
+        border-radius: 4px;
+    }
