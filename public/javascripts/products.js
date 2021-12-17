@@ -28,6 +28,7 @@ function createProductHTML(prod) {
 }
 
 function showProduct(id) {
-    sessionStorage.setItem("product_id", id);
+    console.log("setItem->prodId = " + id);
+    sessionStorage.setItem("prodId", id);
     window.location = "product.html";
 }
