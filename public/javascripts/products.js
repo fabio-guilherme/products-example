@@ -1,5 +1,3 @@
-//const { idleTimeoutMillis } = require("pg/lib/defaults");
-
 window.onload = async function() {
     let prodsElem = document.getElementById("products");
     try {
