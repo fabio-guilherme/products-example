@@ -1,11 +1,3 @@
-var types = [
-    { id: 1, type: "Vegetables" },
-    { id: 12, type: "Meat" },
-    { id: 5, type: "Fish" },
-    { id: 8, type: "Cleaning" },
-    { id: 3, type: "Other" }
-]
-
 window.onload = function() {
     let html = "";
     for (let index in types)

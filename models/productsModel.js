@@ -5,7 +5,7 @@ module.exports.getProducts = async function() {
         let sql = "select * from products"
         let result = await pool.query(sql);
         let products = result.rows;
-        console.log("[productsModel] products = " + JSON.stringify(products));
+        console.log("[productsModel.getProducts] products = " + JSON.stringify(products));
         return { status: 200, data: products };
     } catch (err) {
         console.log(err);
@@ -18,7 +18,7 @@ module.exports.getTypes = async function() {
         let sql = "select * from types"
         let result = await pool.query(sql);
         let types = result.rows;
-        console.log("[productsModel] types = " + JSON.stringify(types));
+        console.log("[productsModel.getTypes] types = " + JSON.stringify(types));
         return { status: 200, data: types };
     } catch (err) {
         console.log(err);
@@ -28,6 +28,7 @@ module.exports.getTypes = async function() {
 
 
 module.exports.getProduct = async function(id) {
+    console.log("[productsModel.getProduct] id = " + JSON.stringify(id));
     try {
         let sql =
             "SELECT * " +
@@ -36,6 +37,7 @@ module.exports.getProduct = async function(id) {
         let result = await pool.query(sql, [id]);
         let products = result.rows;
         if (products.length > 0) {
+            console.log("[productsModel.getProduct] product = " + JSON.stringify(products[0]));
             return { status: 200, data: products[0] };
         } else {
             return { status: 404, data: { msg: "Product not found." } };
@@ -47,6 +49,7 @@ module.exports.getProduct = async function(id) {
 }
 
 module.exports.saveProduct = async function(prod) {
+    console.log("[productsModel.saveProduct] prod = " + JSON.stringify(prod));
     // checks all fields needed and ignores other fields
     if (typeof prod != "object" || failProduct(prod)) {
         if (prod.errMsg)
@@ -56,12 +59,15 @@ module.exports.saveProduct = async function(prod) {
     }
     try {
         let sql =
-            "INSERT * " +
+            "INSERT " +
             "INTO products " +
             "(prod_name, prod_price, prod_type_id) " +
-            "VALUES ($1, $2, $3)";
-        let result = await pool.query(sql, [prod.prod_name, prod.prod_price, prod.Prod_type_id]);
-        return { status: 200, data: result };
+            "VALUES ($1, $2, $3) " +
+            "RETURNING prod_id";
+        let result = await pool.query(sql, [prod.prod_name, prod.prod_price, prod.prod_type_id]);
+        let product = result.rows[0];
+        console.log("[productsModel.saveProduct] product = " + JSON.stringify(product));
+        return { status: 200, data: product };
     } catch (err) {
         console.log(err);
         if (err.errno == 23503) // FK error

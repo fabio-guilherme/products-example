@@ -28,19 +28,20 @@ async function add() {
     let data = {
         prod_name: document.getElementById("name").value,
         prod_type_id: parseInt(document.getElementById("type").value),
-        prod_price: parseFLoat(document.getElementById("price").value)
+        prod_price: parseFloat(document.getElementById("price").value)
     }
+    console.log("[addProducts] data = " + JSON.stringify(data));
     try {
-        let result = await$.ajax({
+        let newProduct = await $.ajax({
             url: "/api/products",
             method: "post",
             data: JSON.stringify(data),
             contentType: "application/json",
             dataType: "json"
         });
-        res.innerHTML = "Inserted product with id: " + result.insertId;
+        res.innerHTML = "Inserted product with id: " + newProduct.prod_id;
     } catch (err) {
-        consle.log(err);
+        console.log(err);
         if (err.responseJSON) {
             res.innerHTML = err.responseJSON.msg;
         } else {
