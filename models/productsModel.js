@@ -2,7 +2,7 @@ var pool = require("./connection");
 
 module.exports.getProducts = async function() {
     try {
-        let sql = "select * from products"
+        let sql = "select * from products";
         let result = await pool.query(sql);
         let products = result.rows;
         console.log("[productsModel.getProducts] products = " + JSON.stringify(products));
@@ -15,7 +15,7 @@ module.exports.getProducts = async function() {
 
 module.exports.getTypes = async function() {
     try {
-        let sql = "select * from types"
+        let sql = "select * from types";
         let result = await pool.query(sql);
         let types = result.rows;
         console.log("[productsModel.getTypes] types = " + JSON.stringify(types));
