@@ -71,11 +71,13 @@ ALTER TABLE public.types OWNER TO postgres;
 -- Data for Name: products; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
-COPY public.products (prod_id, prod_name, prod_price, prod_type_id) FROM stdin;
-2	Beef	1.4	12
-3	Potato	2	1
-4	Salmon	5.99	5
-\.
+INSERT INTO public.products (prod_id, prod_name, prod_price, prod_type_id)
+OVERRIDING SYSTEM VALUE
+VALUES
+	(2, 'Beef', 1.4, 12),
+	(3, 'Potato', 2, 1),
+	(4, 'Salmon', 5.99, 5)
+;
 
 
 --
@@ -84,13 +86,15 @@ COPY public.products (prod_id, prod_name, prod_price, prod_type_id) FROM stdin;
 -- Data for Name: types; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
-COPY public.types (type_id, type_name) FROM stdin;
-1	Vegetables
-12	Meat
-5	Fish
-8	Cleaning
-3	Others
-\.
+INSERT INTO public.types (type_id, type_name)
+OVERRIDING SYSTEM VALUE
+VALUES
+	(1, 'Vegetables'),
+	(12, 'Meat'),
+	(5, 'Fish'),
+	(8, 'Cleaning'),
+	(3, 'Others')
+;
 
 
 --
