@@ -1,34 +1,4 @@
 /*==========================================================================================================
-    Example on how to automate the selection of the database using a global variable (not being used now).  
-    In this case, the router just needs to import this file. global.DATABASE can be set in app.js.
-==========================================================================================================*/
-
-/*
-let modelFile;
-
-let pgFile = "./pg/productsModel";
-let mssqlFile = "./mssql/productsModel";
-
-switch (global.DATABASE) {
-    case global.DB.PG:
-        modelFile = pgFile;
-        console.log("[productsModel] Using Postgres.");
-        break;
-    case global.DB.MSSQL:
-        modelFile = mssqlFile;
-        console.log("[productsModel] Using SQL Server.");
-        break;
-    default:
-        console.log("[productsModel] global.DATABASE not defined! Defaulting to Postgres.");
-        modelFile = pgFile;
-}
-
-let model = require(modelFile);
-module.exports = model;
-*/
-
-
-/*==========================================================================================================
                             Functions to be used by all database versions.
 ==========================================================================================================*/
 
