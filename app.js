@@ -1,3 +1,18 @@
+/*============================================================== 
+    Can be used to allow switching between different databases       
+==============================================================*/
+/*
+global.DB = {
+    PG: 1,
+    MSSQL: 2,
+    MYSQL: 3,
+    MONGODB: 4
+};
+Object.freeze(global.DB);
+global.DATABASE = global.DB.PG; // Define which database to use
+*/
+//==============================================================
+
 var express = require('express');
 var path = require('path');
 var cookieParser = require('cookie-parser');
