@@ -1,6 +1,9 @@
 var express = require('express');
 var router = express.Router();
-var productsModel = require('../models/pg/productsModel'); // Change here to select the database
+
+// Change here to select the database
+//var productsModel = require('../models/pg/productsModel');
+var productsModel = require('../models/mssql/productsModel');
 
 /* GET products listing. */
 router.get('/', async function(req, res, next) {
