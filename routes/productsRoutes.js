@@ -1,7 +1,6 @@
 var express = require('express');
 var router = express.Router();
-// Change here to select the database
-var productsModel = require('../models/pg/productsModel');
+var productsModel = require('../models/pg/productsModel'); // Change here to select the database
 
 /* GET products listing. */
 router.get('/', async function(req, res, next) {
