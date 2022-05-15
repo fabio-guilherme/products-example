@@ -84,7 +84,7 @@ module.exports.saveProduct = async function(prod) {
         return { status: 200, data: product };
     } catch (err) {
         console.log(err);
-        if (err.errno == 23503) // FK error
+        if (err.errno == 547) // FK error
             return { status: 400, data: { msg: "Type not found" } };
         else
             return { status: 500, data: err };
