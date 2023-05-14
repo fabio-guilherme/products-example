@@ -5,8 +5,7 @@ var productsModel = require("../productsModel");
 module.exports.getProducts = async function() {
     try {
         let sql = "select * from products";
-        let result = await pool.query(sql);
-        let products = result.rows;
+        const products = await pool.query(sql);
         console.log("[productsModel.getProducts] products = " + JSON.stringify(products));
         return { status: 200, data: products };
     } catch (err) {
@@ -18,8 +17,7 @@ module.exports.getProducts = async function() {
 module.exports.getTypes = async function() {
     try {
         let sql = "select * from types";
-        let result = await pool.query(sql);
-        let types = result.rows;
+        const types = await pool.query(sql);
         console.log("[productsModel.getTypes] types = " + JSON.stringify(types));
         return { status: 200, data: types };
     } catch (err) {
@@ -35,9 +33,8 @@ module.exports.getProduct = async function(id) {
         let sql =
             "SELECT * " +
             "FROM products p, types t " +
-            "WHERE p.prod_type_id = t.type_id AND prod_id = $1;";
-        let result = await pool.query(sql, [id]);
-        let products = result.rows;
+            "WHERE p.prod_type_id = t.type_id AND prod_id = ?;";
+        let products = await pool.query(sql, [id]);
         if (products.length > 0) {
             console.log("[productsModel.getProduct] product = " + JSON.stringify(products[0]));
             return { status: 200, data: products[0] };
@@ -64,15 +61,14 @@ module.exports.saveProduct = async function(prod) {
             "INSERT " +
             "INTO products " +
             "(prod_name, prod_price, prod_type_id) " +
-            "VALUES ($1, $2, $3) " +
-            "RETURNING prod_id";
+            "VALUES (?, ?, ?); "
         let result = await pool.query(sql, [prod.prod_name, prod.prod_price, prod.prod_type_id]);
-        let product = result.rows[0];
+        let product = { prod_id: result.insertId };
         console.log("[productsModel.saveProduct] product = " + JSON.stringify(product));
         return { status: 200, data: product };
     } catch (err) {
         console.log(err);
-        if (err.errno == 23503) // FK error
+        if (err.errno == 1452) // FK error
             return { status: 400, data: { msg: "Type not found" } };
         else
             return { status: 500, data: err };
